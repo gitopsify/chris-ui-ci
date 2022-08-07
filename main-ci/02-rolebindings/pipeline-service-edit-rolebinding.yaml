@@ -5,7 +5,7 @@ metadata:
   namespace: 
 subjects:
 - kind: ServiceAccount
-  name: chris-ui-ci-pipeline
+  name: pipeline
   apiGroup: ""
 roleRef:
   kind: ClusterRole

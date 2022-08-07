@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - 01-namespace/cicd-namespace.yaml
 - 02-rolebindings/argocd-admin.yaml
+- 02-rolebindings/default-pipeline-service-account.yaml
 - 02-rolebindings/pipeline-service-account.yaml
 - 02-rolebindings/pipeline-service-role.yaml
 - 02-rolebindings/pipeline-service-edit-rolebinding.yaml

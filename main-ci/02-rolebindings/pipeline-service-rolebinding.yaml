@@ -8,5 +8,5 @@ roleRef:
   name: chris-ui-ci-pipelines-clusterrole
 subjects:
 - kind: ServiceAccount
-  name: chris-ui-ci-pipeline
+  name: pipeline
   namespace: chris-ui-ci
