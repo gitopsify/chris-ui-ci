@@ -12,7 +12,7 @@ spec:
     metadata:
       generateName: cube-ci-prod-tr-
     spec:
-      serviceAccountName: cube-ci-pipeline
+      serviceAccountName: pipeline
       pipelineRef:
         name: cube-ci-pipeline-production
       params:
