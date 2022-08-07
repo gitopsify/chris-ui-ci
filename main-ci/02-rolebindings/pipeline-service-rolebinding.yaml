@@ -10,3 +10,6 @@ subjects:
 - kind: ServiceAccount
   name: pipeline
   namespace: chris-ui-ci
+- kind: ServiceAccount
+  name: chris-ui-ci-pipeline
+  namespace: chris-ui-ci
