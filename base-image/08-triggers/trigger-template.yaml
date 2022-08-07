@@ -20,7 +20,7 @@ spec:
     spec:
       serviceAccountName: chris-ui-ci-pipeline
       pipelineRef:
-        name: build-base-image
+        name: build-chris-ui-base-image
       params:
         - name: git-url
           value: $(tt.params.gitrepository.url)

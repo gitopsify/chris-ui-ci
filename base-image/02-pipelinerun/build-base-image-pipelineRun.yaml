@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: build-base-image-
+  generateName: build-chris-ui-base-image-
 spec:
   pipelineRef:
-    name: build-base-image
+    name: build-chris-ui-base-image
   params:
     - name: git-url
       value: https://github.com/gitopsify/chris-ui-ci.git
