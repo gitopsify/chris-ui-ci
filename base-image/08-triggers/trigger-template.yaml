@@ -18,7 +18,7 @@ spec:
     metadata:
       generateName: base-image-ci-tr-
     spec:
-      serviceAccountName: chris-ui-ci-pipeline
+      serviceAccountName: pipeline
       pipelineRef:
         name: build-chris-ui-base-image
       params:

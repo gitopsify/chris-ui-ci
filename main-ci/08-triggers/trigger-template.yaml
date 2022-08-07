@@ -19,7 +19,7 @@ spec:
     metadata:
       generateName: chris-ui-ci-tr-
     spec:
-      serviceAccountName: chris-ui-ci-pipeline
+      serviceAccountName: pipeline
       pipelineRef:
         name: chris-ui-ci-pipeline
       resources:
