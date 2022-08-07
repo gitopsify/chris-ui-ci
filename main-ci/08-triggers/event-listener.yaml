@@ -3,7 +3,7 @@ kind: EventListener
 metadata:
   name: cube-github-ci-listener
 spec:
-  serviceAccountName: pipeline
+  serviceAccountName: cube-ci-pipeline
   triggers:
     - name: github-listener
       bindings:

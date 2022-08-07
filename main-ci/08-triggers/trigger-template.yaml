@@ -19,7 +19,7 @@ spec:
     metadata:
       generateName: cube-ci-tr-
     spec:
-      serviceAccountName: pipeline
+      serviceAccountName: cube-ci-pipeline
       pipelineRef:
         name: cube-ci-pipeline
       resources:

@@ -18,7 +18,7 @@ spec:
     metadata:
       generateName: base-image-ci-tr-
     spec:
-      serviceAccountName: pipeline
+      serviceAccountName: cube-ci-pipeline
       pipelineRef:
         name: build-cube-base-image
       params:
