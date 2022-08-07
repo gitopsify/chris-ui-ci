@@ -8,8 +8,5 @@ roleRef:
   name: cube-ci-pipelines-clusterrole
 subjects:
 - kind: ServiceAccount
-  name: pipeline
-  namespace: cube-ci
-- kind: ServiceAccount
   name: cube-ci-pipeline
   namespace: cube-ci
