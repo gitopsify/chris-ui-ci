@@ -45,23 +45,23 @@ spec:
           value: github.com
         - name: cube-cd-git-url 
           value: gitopsify/cube-cd
-        - name: my-app-cd-git-repo-name
+        - name: cube-cd-git-repo-name
           value: cube-cd
-        - name: my-app-cd-git-repo-path-to-content-development
+        - name: cube-cd-git-repo-path-to-content-development
           value: env/01-dev      
-        - name: my-app-cd-git-repo-path-to-content-qa
+        - name: cube-cd-git-repo-path-to-content-qa
           value: env/02-qa     
-        - name: my-app-cd-git-repo-branch-qa
+        - name: cube-cd-git-repo-branch-qa
           value: "qa-ready"   
-        - name: my-app-cd-git-target-branch-pr 
+        - name: cube-cd-git-target-branch-pr 
           value: "main"
-        - name: my-app-cd-git-commit-comment-dev
+        - name: cube-cd-git-commit-comment-dev
           value: "Update from ci process - dev"
-        - name: my-app-cd-git-commit-comment-qa
+        - name: cube-cd-git-commit-comment-qa
           value: "Update from ci process - qa"          
-        - name: my-app-cd-git-user-name
+        - name: cube-cd-git-user-name
           value: "Raghuram Banda"
-        - name: my-app-cd-git-user-email
+        - name: cube-cd-git-user-email
           value: "rbanda@redhat.com"
         - name: acs_central_endpoint
           value: acs-secret

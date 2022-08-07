@@ -37,23 +37,23 @@ spec:
     type: string
   - name: repo_type
     type: string
-  - name: my-app-cd-git-repo-name   # Continuous delivery git repository name
+  - name: cube-cd-git-repo-name   # Continuous delivery git repository name
     type: string
-  - name: my-app-cd-git-repo-path-to-content-development    # Path to the development assets in the continuous delivery git repository
+  - name: cube-cd-git-repo-path-to-content-development    # Path to the development assets in the continuous delivery git repository
     type: string
-  - name: my-app-cd-git-repo-path-to-content-qa             # Path to the qa assets in the continuous delivery git repository
+  - name: cube-cd-git-repo-path-to-content-qa             # Path to the qa assets in the continuous delivery git repository
     type: string
-  - name: my-app-cd-git-commit-comment-dev  # Comment to be applied to the cd git commit when updating the Kustomize files
+  - name: cube-cd-git-commit-comment-dev  # Comment to be applied to the cd git commit when updating the Kustomize files
     type: string
-  - name: my-app-cd-git-commit-comment-qa   # Comment to be applied to the cd git commit when updating the Kustomize files
+  - name: cube-cd-git-commit-comment-qa   # Comment to be applied to the cd git commit when updating the Kustomize files
     type: string
-  - name: my-app-cd-git-repo-branch-qa      # Branch for commit of kustomization change for QA updates
+  - name: cube-cd-git-repo-branch-qa      # Branch for commit of kustomization change for QA updates
     type: string
-  - name: my-app-cd-git-target-branch-pr    # Target branch for a pull request to merge changes from an environment specific 'feature' branch
+  - name: cube-cd-git-target-branch-pr    # Target branch for a pull request to merge changes from an environment specific 'feature' branch
     type: string
-  - name: my-app-cd-git-user-name           # Continuous delivery git repository update user - username
+  - name: cube-cd-git-user-name           # Continuous delivery git repository update user - username
     type: string
-  - name: my-app-cd-git-user-email          # Continuous delivery git repository update user - email
+  - name: cube-cd-git-user-email          # Continuous delivery git repository update user - email
     type: string
   - name: acs_central_endpoint              # Advanced Cluster Security endpoint
     type: string
@@ -171,17 +171,17 @@ spec:
     - name: GIT_URL
       value: $(params.repo_type)/$(params.cube-cd-git-url)
     - name: GIT_REPO_NAME
-      value: $(params.my-app-cd-git-repo-name)
+      value: $(params.cube-cd-git-repo-name)
     - name: GIT_BRANCH
       value: "main"
     - name: GIT_PATH_TO_CONTENT
-      value: $(params.my-app-cd-git-repo-path-to-content-development)
+      value: $(params.cube-cd-git-repo-path-to-content-development)
     - name: GIT_USER_NAME
-      value: $(params.my-app-cd-git-user-name)
+      value: $(params.cube-cd-git-user-name)
     - name: GIT_USER_EMAIL
-      value: $(params.my-app-cd-git-user-email)
+      value: $(params.cube-cd-git-user-email)
     - name: GIT_COMMIT_COMMENT
-      value: $(params.my-app-cd-git-commit-comment-dev)
+      value: $(params.cube-cd-git-commit-comment-dev)
     - name: IMAGE
       value: $(tasks.create-runtime-image.results.new-image-repo-location)
     - name: LOCATION
@@ -272,19 +272,19 @@ spec:
     - name: GIT_URL
       value: $(params.repo_type)/$(params.cube-cd-git-url)
     - name: GIT_REPO_NAME
-      value: $(params.my-app-cd-git-repo-name)
+      value: $(params.cube-cd-git-repo-name)
     - name: GIT_BRANCH
-      value: $(params.my-app-cd-git-repo-branch-qa)
+      value: $(params.cube-cd-git-repo-branch-qa)
     - name: GIT_PR_TARGET_BRANCH
-      value: $(params.my-app-cd-git-target-branch-pr)
+      value: $(params.cube-cd-git-target-branch-pr)
     - name: GIT_PATH_TO_CONTENT
-      value: $(params.my-app-cd-git-repo-path-to-content-qa)
+      value: $(params.cube-cd-git-repo-path-to-content-qa)
     - name: GIT_USER_NAME
-      value: $(params.my-app-cd-git-user-name)
+      value: $(params.cube-cd-git-user-name)
     - name: GIT_USER_EMAIL
-      value: $(params.my-app-cd-git-user-email)
+      value: $(params.cube-cd-git-user-email)
     - name: GIT_COMMIT_COMMENT
-      value: $(params.my-app-cd-git-commit-comment-qa)
+      value: $(params.cube-cd-git-commit-comment-qa)
     - name: IMAGE
       value: $(tasks.create-runtime-image.results.new-image-repo-location)
       # value: $(tasks.push-image-to-quay.results.quay-image-repo-location)
@@ -312,7 +312,7 @@ spec:
     - name: GIT_REPO
       value: $(params.cube-cd-git-url)
     - name: REPO
-      value: $(params.my-app-cd-git-repo-name)
+      value: $(params.cube-cd-git-repo-name)
     - name: GIT_TOKEN_SECRET_NAME
       value: github-access-token
     - name: GIT_TOKEN_SECRET_KEY
@@ -338,7 +338,7 @@ spec:
     - name: url
       value: https://$(params.repo_type)/$(params.cube-cd-git-url).git
     - name: revision
-      value: $(params.my-app-cd-git-repo-branch-qa)
+      value: $(params.cube-cd-git-repo-branch-qa)
     - name: verbose
       value: 'false'
     taskRef:
@@ -356,7 +356,7 @@ spec:
   - name: configure-deployment-assets
     params:
     - name: subdirectory
-      value: $(params.my-app-cd-git-repo-path-to-content-qa)
+      value: $(params.cube-cd-git-repo-path-to-content-qa)
     taskRef:
       kind: Task
       name: configure-deployment-assets
@@ -375,7 +375,7 @@ spec:
     - name: acs_api_token
       value: $(params.acs_api_token)
     - name: source_location
-      value: $(params.my-app-cd-git-repo-path-to-content-qa)
+      value: $(params.cube-cd-git-repo-path-to-content-qa)
     - name: recursive-search
       value: $(params.recursive-search)
     - name: roxctl-output-format
@@ -397,7 +397,7 @@ spec:
     - name: GIT_REPO
       value: $(params.cube-cd-git-url)
     - name: REPO
-      value: $(params.my-app-cd-git-repo-name)
+      value: $(params.cube-cd-git-repo-name)
     - name: GIT_TOKEN_SECRET_NAME
       value: github-access-token
     - name: GIT_TOKEN_SECRET_KEY
