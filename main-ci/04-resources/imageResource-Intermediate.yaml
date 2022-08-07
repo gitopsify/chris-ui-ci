@@ -1,8 +1,8 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: myapp-ci-intermediate
-  namespace: myapp-ci
+  name: chris-ui-ci-intermediate
+  namespace: chris-ui-ci
 spec:
   params:
   - name: url

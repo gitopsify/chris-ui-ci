@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: myapp-ci-trigger-pipeline-prod-template
+  name: chris-ui-ci-trigger-pipeline-prod-template
 spec:
   params:
   - name: docker_url
@@ -10,18 +10,18 @@ spec:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      generateName: myapp-ci-prod-tr-
+      generateName: chris-ui-ci-prod-tr-
     spec:
       serviceAccountName: pipeline
       pipelineRef:
-        name: myapp-ci-pipeline-production
+        name: chris-ui-ci-pipeline-production
       params:
         - name: repo_type
           value: github.com
-        - name: myapp-cd-git-url
-          value: veniceofcode/myApp-cd
+        - name: chris-ui-cd-git-url
+          value: gitopsify/chris-ui-cd
         - name: my-app-cd-git-repo-name
-          value: myApp-cd
+          value: chris-ui-cd
         - name: my-app-cd-git-repo-path-to-content
           value: env/03-production
         - name: my-app-cd-git-repo-branch
@@ -31,9 +31,9 @@ spec:
         - name: my-app-cd-git-commit-comment
           value: "Update from ci process - production"
         - name: my-app-cd-git-user-name
-          value: "Mark Roberts"
+          value: "Raghuram Banda"
         - name: my-app-cd-git-user-email
-          value: "mroberts@redhat.com"
+          value: "rbanda@redhat.com"
         - name: acs_central_endpoint
           value: acs-secret
         - name: acs_api_token

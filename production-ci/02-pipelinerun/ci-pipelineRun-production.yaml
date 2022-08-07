@@ -1,18 +1,18 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: myapp-ci-pipeline-prod-
-  namespace: myapp-ci
+  generateName: chris-ui-ci-pipeline-prod-
+  namespace: chris-ui-ci
 spec:
   pipelineRef:
-    name: myapp-ci-pipeline-production
+    name: chris-ui-ci-pipeline-production
   params:
     - name: repo_type
       value: github.com
-    - name: myapp-cd-git-url
-      value: veniceofcode/myApp-cd
+    - name: chris-ui-cd-git-url
+      value: gitopsify/chris-ui-cd
     - name: my-app-cd-git-repo-name
-      value: myApp-cd
+      value: chris-ui-cd
     - name: my-app-cd-git-repo-path-to-content
       value: env/03-production
     - name: my-app-cd-git-repo-branch
@@ -34,7 +34,7 @@ spec:
     - name: recursive-search
       value: "true"
     - name: image
-      value: quay.io/rbrhssa/myapp:545f-frb5j
+      value: quay.io/rbrhssa/chris-ui:545f-frb5j
   workspaces:
   - name: resources
     volumeClaimTemplate:

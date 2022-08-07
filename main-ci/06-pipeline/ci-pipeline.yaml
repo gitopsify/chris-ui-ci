@@ -3,8 +3,8 @@ kind: Pipeline
 metadata:
   labels:
     pipeline.openshift.io/type: kubernetes
-  name: myapp-ci-pipeline
-  namespace: myapp-ci
+  name: chris-ui-ci-pipeline
+  namespace: chris-ui-ci
 spec:
   resources:
   - name: intermediate-image
@@ -33,7 +33,7 @@ spec:
     type: string
   - name: runtime_base_image        # Input base image into which the build jar file is injected
     type: string
-  - name: myapp-cd-git-url          # Continuous delivery git repository url
+  - name: chris-ui-cd-git-url          # Continuous delivery git repository url
     type: string
   - name: repo_type
     type: string
@@ -72,7 +72,7 @@ spec:
     default: "latest"
   - name: production-event-listener-route   # Route for the curl command to spoof the quay webook when using demolab
     type: string
-    default: 'http://myapp-github-ci-prod-listener-myapp-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com'
+    default: 'http://chris-ui-github-ci-prod-listener-chris-ui-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com'
   - name: demolab
     type: string
     default: 'no'
@@ -169,7 +169,7 @@ spec:
   - name: update-and-commit-kustomization-file-dev
     params:
     - name: GIT_URL
-      value: $(params.repo_type)/$(params.myapp-cd-git-url)
+      value: $(params.repo_type)/$(params.chris-ui-cd-git-url)
     - name: GIT_REPO_NAME
       value: $(params.my-app-cd-git-repo-name)
     - name: GIT_BRANCH
@@ -270,7 +270,7 @@ spec:
   - name: update-and-commit-kustomization-file-qa
     params:
     - name: GIT_URL
-      value: $(params.repo_type)/$(params.myapp-cd-git-url)
+      value: $(params.repo_type)/$(params.chris-ui-cd-git-url)
     - name: GIT_REPO_NAME
       value: $(params.my-app-cd-git-repo-name)
     - name: GIT_BRANCH
@@ -310,7 +310,7 @@ spec:
   - name: set-commit-status-qa-branch-pending
     params:
     - name: GIT_REPO
-      value: $(params.myapp-cd-git-url)
+      value: $(params.chris-ui-cd-git-url)
     - name: REPO
       value: $(params.my-app-cd-git-repo-name)
     - name: GIT_TOKEN_SECRET_NAME
@@ -336,7 +336,7 @@ spec:
   - name: git-clone-resources-cd-qa-branch
     params:
     - name: url
-      value: https://$(params.repo_type)/$(params.myapp-cd-git-url).git
+      value: https://$(params.repo_type)/$(params.chris-ui-cd-git-url).git
     - name: revision
       value: $(params.my-app-cd-git-repo-branch-qa)
     - name: verbose
@@ -395,7 +395,7 @@ spec:
   - name: set-commit-status-qa-branch-success
     params:
     - name: GIT_REPO
-      value: $(params.myapp-cd-git-url)
+      value: $(params.chris-ui-cd-git-url)
     - name: REPO
       value: $(params.my-app-cd-git-repo-name)
     - name: GIT_TOKEN_SECRET_NAME

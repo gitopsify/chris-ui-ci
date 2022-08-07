@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: myapp-ci-trigger-pipeline-template
+  name: chris-ui-ci-trigger-pipeline-template
 spec:
   params:
   - name: gitrepository.url
@@ -17,25 +17,25 @@ spec:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      generateName: myapp-ci-tr-
+      generateName: chris-ui-ci-tr-
     spec:
       serviceAccountName: pipeline
       pipelineRef:
-        name: myapp-ci-pipeline
+        name: chris-ui-ci-pipeline
       resources:
         - name: intermediate-image
           resourceRef:
-            name: myapp-ci-intermediate
+            name: chris-ui-ci-intermediate
         - name: runtime-image
           resourceRef:
-            name: myapp-runtime
+            name: chris-ui-runtime
       params:
         - name: STORAGE_DRIVER
           value: vfs   
         - name: openshift_app_name
-          value: myapp-ci   
+          value: chris-ui-ci   
         - name: runtime_image_name
-          value: myapp-runtime
+          value: chris-ui-runtime
         - name: runtime_base_image
           # - open-liberty-base:2 - bad image
           # - openliberty:10 - good image
@@ -43,10 +43,10 @@ spec:
           value: quay.io/marrober/openliberty:latest  
         - name: repo_type
           value: github.com
-        - name: myapp-cd-git-url 
-          value: veniceofcode/myApp-cd
+        - name: chris-ui-cd-git-url 
+          value: gitopsify/chris-ui-cd
         - name: my-app-cd-git-repo-name
-          value: myApp-cd
+          value: chris-ui-cd
         - name: my-app-cd-git-repo-path-to-content-development
           value: env/01-dev      
         - name: my-app-cd-git-repo-path-to-content-qa
@@ -74,7 +74,7 @@ spec:
         - name: quay-io-account
           value: "rbrhssa"
         - name: quay-io-repository
-          value: "myapp"          
+          value: "chris-ui"          
         - name: source-git-url
           value: $(tt.params.gitrepository.url)
         - name: gitrepository_fullname

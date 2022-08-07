@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
-  name: myapp-ci-pipeline-prod-binding
+  name: chris-ui-ci-pipeline-prod-binding
 spec:
   params:
   - name: docker_url

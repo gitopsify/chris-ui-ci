@@ -1,12 +1,12 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: myapp-github-ci-listener
+  name: chris-ui-github-ci-listener
 spec:
   serviceAccountName: pipeline
   triggers:
     - name: github-listener
       bindings:
-        - ref: myapp-ci-pipeline-binding
+        - ref: chris-ui-ci-pipeline-binding
       template:
-        ref: myapp-ci-trigger-pipeline-template
+        ref: chris-ui-ci-trigger-pipeline-template

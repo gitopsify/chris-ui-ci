@@ -7,7 +7,7 @@ spec:
     name: build-base-image
   params:
     - name: git-url
-      value: https://github.com/veniceofcode/myApp-ci.git
+      value: https://github.com/gitopsify/chris-ui-ci.git
     - name: git-revision
       value: main
     - name: quay-io-account
