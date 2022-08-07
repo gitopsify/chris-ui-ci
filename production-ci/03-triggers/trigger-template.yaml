@@ -12,7 +12,7 @@ spec:
     metadata:
       generateName: chris-ui-ci-prod-tr-
     spec:
-      serviceAccountName: chris-ui-ci-pipeline
+      serviceAccountName: pipeline
       pipelineRef:
         name: chris-ui-ci-pipeline-production
       params:
