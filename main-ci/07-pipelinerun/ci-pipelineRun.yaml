@@ -1,18 +1,18 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: chris-ui-ci-pipeline-
-  namespace: chris-ui-ci
+  generateName: cube-ci-pipeline-
+  namespace: cube-ci
 spec:
   pipelineRef:
-    name: chris-ui-ci-pipeline
+    name: cube-ci-pipeline
   resources:
     - name: intermediate-image
       resourceRef:
-        name:  chris-ui-ci-intermediate
+        name:  cube-ci-intermediate
     - name: runtime-image
       resourceRef:
-        name: chris-ui-runtime
+        name: cube-runtime
   params:
     - name: source-git-url
       value: https://github.com/gitopsify/ChRIS_ui.git
@@ -29,9 +29,9 @@ spec:
     - name: commit_author
       value: ""
     - name: openshift_app_name
-      value: chris-ui-ci
+      value: cube-ci
     - name: runtime_image_name
-      value: chris-ui-runtime
+      value: cube-runtime
     - name: runtime_base_image
       # - open-liberty-base:2 - bad image
       # - openliberty:10 - good image
@@ -39,10 +39,10 @@ spec:
       value: quay.io/marrober/openliberty:latest
     - name: repo_type
       value: github.com
-    - name: chris-ui-cd-git-url
-      value: gitopsify/chris-ui-cd
+    - name: cube-cd-git-url
+      value: gitopsify/cube-cd
     - name: my-app-cd-git-repo-name
-      value: chris-ui-cd
+      value: cube-cd
     - name: my-app-cd-git-repo-path-to-content-development
       value: env/01-dev
     - name: my-app-cd-git-repo-path-to-content-qa
@@ -70,9 +70,9 @@ spec:
     - name: quay-io-account
       value: "rbrhssa"
     - name: quay-io-repository
-      value: "chris-ui"
+      value: "cube"
     - name: production-event-listener-route
-      value: http://chris-ui-github-ci-prod-listener-chris-ui-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com
+      value: http://cube-github-ci-prod-listener-cube-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com
     - name: demolab
       value: "no"
   workspaces:

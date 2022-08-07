@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: chris-ui-ci-trigger-pipeline-prod-template
+  name: cube-ci-trigger-pipeline-prod-template
 spec:
   params:
   - name: docker_url
@@ -10,18 +10,18 @@ spec:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      generateName: chris-ui-ci-prod-tr-
+      generateName: cube-ci-prod-tr-
     spec:
       serviceAccountName: pipeline
       pipelineRef:
-        name: chris-ui-ci-pipeline-production
+        name: cube-ci-pipeline-production
       params:
         - name: repo_type
           value: github.com
-        - name: chris-ui-cd-git-url
-          value: gitopsify/chris-ui-cd
+        - name: cube-cd-git-url
+          value: gitopsify/cube-cd
         - name: my-app-cd-git-repo-name
-          value: chris-ui-cd
+          value: cube-cd
         - name: my-app-cd-git-repo-path-to-content
           value: env/03-production
         - name: my-app-cd-git-repo-branch

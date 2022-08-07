@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
   name: configure-kustomization-file
-  namespace: chris-ui-ci
+  namespace: cube-ci
 spec:
   params:
   - name: image-url
@@ -23,7 +23,7 @@ spec:
         cat kustomization.yaml
 
       image: quay.io/marrober/kustomize:latest
-      workingDir: /files/chris-ui-cd/env/overlays/01-dev     
+      workingDir: /files/cube-cd/env/overlays/01-dev     
   workspaces:
   - name: files
     mountPath: /files   

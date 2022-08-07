@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: chris-ui-runtime
-  namespace: chris-ui-ci
+  name: cube-runtime
+  namespace: cube-ci
 spec:
   params:
   - name: url
-    value: image-registry.openshift-image-registry.svc:5000/chris-ui-ci/chris-ui-runtime
+    value: image-registry.openshift-image-registry.svc:5000/cube-ci/cube-runtime
   type: image

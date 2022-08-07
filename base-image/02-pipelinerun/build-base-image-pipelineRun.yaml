@@ -1,13 +1,13 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: build-chris-ui-base-image-
+  generateName: build-cube-base-image-
 spec:
   pipelineRef:
-    name: build-chris-ui-base-image
+    name: build-cube-base-image
   params:
     - name: git-url
-      value: https://github.com/gitopsify/chris-ui-ci.git
+      value: https://github.com/gitopsify/cube-ci.git
     - name: git-revision
       value: main
     - name: quay-io-account

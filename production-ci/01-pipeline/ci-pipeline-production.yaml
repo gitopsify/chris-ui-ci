@@ -3,13 +3,13 @@ kind: Pipeline
 metadata:
   labels:
     pipeline.openshift.io/type: kubernetes
-  name: chris-ui-ci-pipeline-production
-  namespace: chris-ui-ci
+  name: cube-ci-pipeline-production
+  namespace: cube-ci
 spec:
   params:
   - name: repo_type
     type: string
-  - name: chris-ui-cd-git-url          # Continuous delivery git repository url
+  - name: cube-cd-git-url          # Continuous delivery git repository url
     type: string
   - name: my-app-cd-git-repo-name   # Continuous delivery git repository name
     type: string
@@ -43,7 +43,7 @@ spec:
   - name: update-and-commit-kustomization-file
     params:
     - name: GIT_URL
-      value: $(params.repo_type)/$(params.chris-ui-cd-git-url)
+      value: $(params.repo_type)/$(params.cube-cd-git-url)
     - name: GIT_REPO_NAME
       value: $(params.my-app-cd-git-repo-name)
     - name: GIT_BRANCH
@@ -74,7 +74,7 @@ spec:
   - name: set-commit-status-pending
     params:
     - name: GIT_REPO
-      value: $(params.chris-ui-cd-git-url)
+      value: $(params.cube-cd-git-url)
     - name: REPO
       value: $(params.my-app-cd-git-repo-name)
     - name: GIT_TOKEN_SECRET_NAME
@@ -100,7 +100,7 @@ spec:
   - name: git-clone-resources-cd
     params:
     - name: url
-      value: https://$(params.repo_type)/$(params.chris-ui-cd-git-url).git
+      value: https://$(params.repo_type)/$(params.cube-cd-git-url).git
     - name: revision
       value: $(params.my-app-cd-git-repo-branch)
     - name: verbose
@@ -159,7 +159,7 @@ spec:
   - name: set-commit-status
     params:
     - name: GIT_REPO
-      value: $(params.chris-ui-cd-git-url)
+      value: $(params.cube-cd-git-url)
     - name: REPO
       value: $(params.my-app-cd-git-repo-name)
     - name: GIT_TOKEN_SECRET_NAME

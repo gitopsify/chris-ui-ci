@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerTemplate
 metadata:
-  name: chris-ui-ci-trigger-pipeline-template
+  name: cube-ci-trigger-pipeline-template
 spec:
   params:
   - name: gitrepository.url
@@ -17,25 +17,25 @@ spec:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
     metadata:
-      generateName: chris-ui-ci-tr-
+      generateName: cube-ci-tr-
     spec:
       serviceAccountName: pipeline
       pipelineRef:
-        name: chris-ui-ci-pipeline
+        name: cube-ci-pipeline
       resources:
         - name: intermediate-image
           resourceRef:
-            name: chris-ui-ci-intermediate
+            name: cube-ci-intermediate
         - name: runtime-image
           resourceRef:
-            name: chris-ui-runtime
+            name: cube-runtime
       params:
         - name: STORAGE_DRIVER
           value: vfs   
         - name: openshift_app_name
-          value: chris-ui-ci   
+          value: cube-ci   
         - name: runtime_image_name
-          value: chris-ui-runtime
+          value: cube-runtime
         - name: runtime_base_image
           # - open-liberty-base:2 - bad image
           # - openliberty:10 - good image
@@ -43,10 +43,10 @@ spec:
           value: quay.io/marrober/openliberty:latest  
         - name: repo_type
           value: github.com
-        - name: chris-ui-cd-git-url 
-          value: gitopsify/chris-ui-cd
+        - name: cube-cd-git-url 
+          value: gitopsify/cube-cd
         - name: my-app-cd-git-repo-name
-          value: chris-ui-cd
+          value: cube-cd
         - name: my-app-cd-git-repo-path-to-content-development
           value: env/01-dev      
         - name: my-app-cd-git-repo-path-to-content-qa
@@ -74,7 +74,7 @@ spec:
         - name: quay-io-account
           value: "rbrhssa"
         - name: quay-io-repository
-          value: "chris-ui"          
+          value: "cube"          
         - name: source-git-url
           value: $(tt.params.gitrepository.url)
         - name: gitrepository_fullname
