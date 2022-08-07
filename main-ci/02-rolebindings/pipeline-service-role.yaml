@@ -50,3 +50,10 @@ rules:
   - get
   - create
   - patch
+- apiGroups:
+  - triggers.tekton.dev
+  resources:
+  - clusterinterceptors
+  verbs:
+  - list
+  - get
