@@ -7,4 +7,4 @@ spec:
   params:
   - name: url
     value: image-registry.openshift-image-registry.svc:5000/chris-ui-ci/chris-ui-runtime
-  type: image 
+  type: image
