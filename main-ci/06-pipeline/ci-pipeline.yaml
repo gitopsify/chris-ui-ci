@@ -109,7 +109,7 @@ spec:
         resource: intermediate-image
     taskRef:
       kind: Task
-      name: build-chris-ui-base-image
+      name: build
     runAfter:
     - git-clone-source
     workspaces:
