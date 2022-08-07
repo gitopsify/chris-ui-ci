@@ -34,7 +34,7 @@ spec:
         - '/files/buildah-containers'
         - '--layers'
         - '-f'
-        - base-image/04-dockerfile/fix-open-liberty-image
+        - base-image/04-dockerfile/fix-chris-ui-image
         - '-t'
         - quay.io/$(params.quay-io-account)/$(params.quay-io-repository):$(params.quay-io-image-tag-name)
         - .

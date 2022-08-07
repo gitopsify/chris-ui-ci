@@ -3,7 +3,7 @@ kind: EventListener
 metadata:
   name: chris-ui-github-ci-listener
 spec:
-  serviceAccountName: chris-ui-ci-pipeline
+  serviceAccountName: pipeline
   triggers:
     - name: github-listener
       bindings:

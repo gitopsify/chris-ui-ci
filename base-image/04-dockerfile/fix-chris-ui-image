@@ -1,0 +1,39 @@
+#FROM docker.io/openliberty/open-liberty:latest
+#FROM openliberty/open-liberty:21.0.0.9-full-java8-ibmjava-ubi
+
+#USER root
+
+#RUN rm -rf /var/lib/rpm/.rpm.lock
+
+#RUN yum update -y --allowerasing --nobest
+
+#RUN rpm -e --nodeps --verbose dnf-data dnf dnf-plugin-subscription-manager python3-rpm python3-libdnf python3-dnf python3-dnf-plugins-core python3-hawkey libdnf
+
+#RUN rpm -e --nodeps --verbose rpm rpm-libs rpm-build-libs libsolv yum
+
+#USER 1001
+
+
+FROM node:16 as builder
+
+WORKDIR /app
+COPY . .
+
+RUN npm run -s print-version
+RUN npm install
+RUN npm run build 
+
+
+FROM node:16-alpine
+
+RUN yarn global add sirv-cli
+
+WORKDIR /app
+
+COPY --from=builder /app/build /app
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+USER 1001
+ENTRYPOINT ["/docker-entrypoint.sh"]
+ENV HOST=0.0.0.0 PORT=3000
+CMD ["sirv", "--quiet", "--etag", "--single"]
+EXPOSE 3000
