@@ -27,7 +27,7 @@ spec:
         - '/files/buildah-containers'
         - '--layers'
         - '-f'
-        - base-image/04-dockerfile/fix-chris-ui-image
+        - Dockerfile
         - '-t'
         - $(resources.outputs.intermediate-image.url)
         - .
