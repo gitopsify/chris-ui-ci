@@ -9,10 +9,12 @@ rules:
   resources:
   - namespaces
   - services
+  - configmaps
   verbs:
   - patch
   - get
   - create
+  - list
 - apiGroups:
   - rbac.authorization.k8s.io
   resources:
