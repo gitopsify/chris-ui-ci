@@ -1,21 +1,21 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: cube-ci-pipeline-
-  namespace: cube-ci
+  generateName: pacman-ci-pipeline-
+  namespace: pacman-ci
 spec:
   pipelineRef:
-    name: cube-ci-pipeline
+    name: pacman-ci-pipeline
   resources:
     - name: intermediate-image
       resourceRef:
-        name:  cube-ci-intermediate
+        name:  pacman-ci-intermediate
     - name: runtime-image
       resourceRef:
-        name: cube-runtime
+        name: pacman-runtime
   params:
     - name: source-git-url
-      value: https://github.com/gitopsify/ChRIS_ultron_backEnd.git
+      value: https://github.com/gitopsify/pacman.git
     - name: source-git-revision
       value: main
     - name: STORAGE_DRIVER
@@ -29,9 +29,9 @@ spec:
     - name: commit_author
       value: ""
     - name: openshift_app_name
-      value: cube-ci
+      value: pacman-ci
     - name: runtime_image_name
-      value: cube-runtime
+      value: pacman-runtime
     - name: runtime_base_image
       # - open-liberty-base:2 - bad image
       # - openliberty:10 - good image
@@ -39,25 +39,25 @@ spec:
       value: quay.io/marrober/openliberty:latest
     - name: repo_type
       value: github.com
-    - name: cube-cd-git-url
-      value: gitopsify/cube-cd
-    - name: cube-cd-git-repo-name
-      value: cube-cd
-    - name: cube-cd-git-repo-path-to-content-development
+    - name: pacman-cd-git-url
+      value: gitopsify/pacman-cd
+    - name: pacman-cd-git-repo-name
+      value: pacman-cd
+    - name: pacman-cd-git-repo-path-to-content-development
       value: env/01-dev
-    - name: cube-cd-git-repo-path-to-content-qa
+    - name: pacman-cd-git-repo-path-to-content-qa
       value: env/02-qa
-    - name: cube-cd-git-repo-branch-qa
+    - name: pacman-cd-git-repo-branch-qa
       value: "qa-ready"
-    - name: cube-cd-git-target-branch-pr
+    - name: pacman-cd-git-target-branch-pr
       value: "main"
-    - name: cube-cd-git-commit-comment-dev
+    - name: pacman-cd-git-commit-comment-dev
       value: "Update from ci process - dev"
-    - name: cube-cd-git-commit-comment-qa
+    - name: pacman-cd-git-commit-comment-qa
       value: "Update from ci process - qa"
-    - name: cube-cd-git-user-name
+    - name: pacman-cd-git-user-name
       value: "Raghuram Banda"
-    - name: cube-cd-git-user-email
+    - name: pacman-cd-git-user-email
       value: "rbanda@redhat.com"
     - name: acs_central_endpoint
       value: acs-secret
@@ -70,9 +70,9 @@ spec:
     - name: quay-io-account
       value: "rbrhssa"
     - name: quay-io-repository
-      value: "cube"
+      value: "pacman"
     - name: production-event-listener-route
-      value: http://cube-github-ci-prod-listener-cube-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com
+      value: http://pacman-github-ci-prod-listener-pacman-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com
     - name: demolab
       value: "no"
   workspaces:

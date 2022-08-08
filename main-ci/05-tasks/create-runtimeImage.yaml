@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
   name: create-runtime-image
-  namespace: cube-ci
+  namespace: pacman-ci
 spec:
   params:
     - name: TLSVERIFY

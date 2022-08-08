@@ -2,11 +2,11 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   labels:
-    eventlistener:  cube-github-ci-listener
-  name: cube-github-ci-listener
+    eventlistener:  pacman-github-ci-listener
+  name: pacman-github-ci-listener
 spec:
   port:
     targetPort: http-listener
   to:
     kind: Service
-    name: el-cube-github-ci-listener
+    name: el-pacman-github-ci-listener

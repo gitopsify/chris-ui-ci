@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: cube-runtime
-  namespace: cube-ci
+  name: pacman-runtime
+  namespace: pacman-ci
 spec:
   params:
   - name: url
-    value: image-registry.openshift-image-registry.svc:5000/cube-ci/cube-runtime
+    value: image-registry.openshift-image-registry.svc:5000/pacman-ci/pacman-runtime
   type: image

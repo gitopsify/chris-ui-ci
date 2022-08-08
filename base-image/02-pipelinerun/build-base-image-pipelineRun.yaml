@@ -1,13 +1,13 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: build-cube-base-image-
+  generateName: build-pacman-base-image-
 spec:
   pipelineRef:
-    name: build-cube-base-image
+    name: build-pacman-base-image
   params:
     - name: git-url
-      value: https://github.com/gitopsify/cube-ci.git
+      value: https://github.com/gitopsify/pacman-ci.git
     - name: git-revision
       value: main
     - name: quay-io-account

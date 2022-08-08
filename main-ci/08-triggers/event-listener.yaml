@@ -1,12 +1,12 @@
 apiVersion: triggers.tekton.dev/v1alpha1
 kind: EventListener
 metadata:
-  name: cube-github-ci-listener
+  name: pacman-github-ci-listener
 spec:
   serviceAccountName: pipeline
   triggers:
     - name: github-listener
       bindings:
-        - ref: cube-ci-pipeline-binding
+        - ref: pacman-ci-pipeline-binding
       template:
-        ref: cube-ci-trigger-pipeline-template
+        ref: pacman-ci-trigger-pipeline-template

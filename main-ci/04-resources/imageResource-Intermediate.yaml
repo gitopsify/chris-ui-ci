@@ -1,8 +1,8 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: cube-ci-intermediate
-  namespace: cube-ci
+  name: pacman-ci-intermediate
+  namespace: pacman-ci
 spec:
   params:
   - name: url

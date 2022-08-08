@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
   name: configure-kustomization-file
-  namespace: cube-ci
+  namespace: pacman-ci
 spec:
   params:
   - name: image-url
@@ -23,7 +23,7 @@ spec:
         cat kustomization.yaml
 
       image: quay.io/marrober/kustomize:latest
-      workingDir: /files/cube-cd/env/overlays/01-dev     
+      workingDir: /files/pacman-cd/env/overlays/01-dev     
   workspaces:
   - name: files
     mountPath: /files   

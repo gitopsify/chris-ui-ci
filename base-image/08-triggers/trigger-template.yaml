@@ -20,7 +20,7 @@ spec:
     spec:
       serviceAccountName: pipeline
       pipelineRef:
-        name: build-cube-base-image
+        name: build-pacman-base-image
       params:
         - name: git-url
           value: $(tt.params.gitrepository.url)
