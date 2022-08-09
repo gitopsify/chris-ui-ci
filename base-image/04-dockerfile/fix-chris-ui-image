@@ -1,4 +1,4 @@
-FROM node:16 as builder
+FROM quay.io/fedora/nodejs-16 as builder
 
 WORKDIR /app
 COPY . .
@@ -16,7 +16,7 @@ WORKDIR /app
 
 COPY --from=builder /app/build /app
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-USER 1001
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 ENV HOST=0.0.0.0 PORT=3000
 CMD ["sirv", "--quiet", "--etag", "--single"]
