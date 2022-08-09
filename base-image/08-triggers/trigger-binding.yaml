@@ -5,7 +5,7 @@ metadata:
 spec:
   params:
   - name: gitrepository.url
-    value: https://github.com/gitopsify/pacman-ci.git
+    value: https://github.com/gitopsify/chris-ui-ci.git
   - name: gitrevision
     value: main
   - name: quay-io-account

@@ -3,8 +3,8 @@ kind: Pipeline
 metadata:
   labels:
     pipeline.openshift.io/type: kubernetes
-  name: pacman-ci-pipeline
-  namespace: pacman-ci
+  name: chris-ui-ci-pipeline
+  namespace: chris-ui-ci
 spec:
   resources:
   - name: intermediate-image
@@ -33,27 +33,27 @@ spec:
     type: string
   - name: runtime_base_image        # Input base image into which the build jar file is injected
     type: string
-  - name: pacman-cd-git-url          # Continuous delivery git repository url
+  - name: chris-ui-cd-git-url          # Continuous delivery git repository url
     type: string
   - name: repo_type
     type: string
-  - name: pacman-cd-git-repo-name   # Continuous delivery git repository name
+  - name: chris-ui-cd-git-repo-name   # Continuous delivery git repository name
     type: string
-  - name: pacman-cd-git-repo-path-to-content-development    # Path to the development assets in the continuous delivery git repository
+  - name: chris-ui-cd-git-repo-path-to-content-development    # Path to the development assets in the continuous delivery git repository
     type: string
-  - name: pacman-cd-git-repo-path-to-content-qa             # Path to the qa assets in the continuous delivery git repository
+  - name: chris-ui-cd-git-repo-path-to-content-qa             # Path to the qa assets in the continuous delivery git repository
     type: string
-  - name: pacman-cd-git-commit-comment-dev  # Comment to be applied to the cd git commit when updating the Kustomize files
+  - name: chris-ui-cd-git-commit-comment-dev  # Comment to be applied to the cd git commit when updating the Kustomize files
     type: string
-  - name: pacman-cd-git-commit-comment-qa   # Comment to be applied to the cd git commit when updating the Kustomize files
+  - name: chris-ui-cd-git-commit-comment-qa   # Comment to be applied to the cd git commit when updating the Kustomize files
     type: string
-  - name: pacman-cd-git-repo-branch-qa      # Branch for commit of kustomization change for QA updates
+  - name: chris-ui-cd-git-repo-branch-qa      # Branch for commit of kustomization change for QA updates
     type: string
-  - name: pacman-cd-git-target-branch-pr    # Target branch for a pull request to merge changes from an environment specific 'feature' branch
+  - name: chris-ui-cd-git-target-branch-pr    # Target branch for a pull request to merge changes from an environment specific 'feature' branch
     type: string
-  - name: pacman-cd-git-user-name           # Continuous delivery git repository update user - username
+  - name: chris-ui-cd-git-user-name           # Continuous delivery git repository update user - username
     type: string
-  - name: pacman-cd-git-user-email          # Continuous delivery git repository update user - email
+  - name: chris-ui-cd-git-user-email          # Continuous delivery git repository update user - email
     type: string
   - name: acs_central_endpoint              # Advanced Cluster Security endpoint
     type: string
@@ -72,7 +72,7 @@ spec:
     default: "latest"
   - name: production-event-listener-route   # Route for the curl command to spoof the quay webook when using demolab
     type: string
-    default: 'http://pacman-github-ci-prod-listener-pacman-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com'
+    default: 'http://chris-ui-github-ci-prod-listener-chris-ui-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com'
   - name: demolab
     type: string
     default: 'no'
@@ -169,19 +169,19 @@ spec:
   - name: update-and-commit-kustomization-file-dev
     params:
     - name: GIT_URL
-      value: $(params.repo_type)/$(params.pacman-cd-git-url)
+      value: $(params.repo_type)/$(params.chris-ui-cd-git-url)
     - name: GIT_REPO_NAME
-      value: $(params.pacman-cd-git-repo-name)
+      value: $(params.chris-ui-cd-git-repo-name)
     - name: GIT_BRANCH
       value: "main"
     - name: GIT_PATH_TO_CONTENT
-      value: $(params.pacman-cd-git-repo-path-to-content-development)
+      value: $(params.chris-ui-cd-git-repo-path-to-content-development)
     - name: GIT_USER_NAME
-      value: $(params.pacman-cd-git-user-name)
+      value: $(params.chris-ui-cd-git-user-name)
     - name: GIT_USER_EMAIL
-      value: $(params.pacman-cd-git-user-email)
+      value: $(params.chris-ui-cd-git-user-email)
     - name: GIT_COMMIT_COMMENT
-      value: $(params.pacman-cd-git-commit-comment-dev)
+      value: $(params.chris-ui-cd-git-commit-comment-dev)
     - name: IMAGE
       value: $(tasks.create-runtime-image.results.new-image-repo-location)
     - name: LOCATION
@@ -270,21 +270,21 @@ spec:
   - name: update-and-commit-kustomization-file-qa
     params:
     - name: GIT_URL
-      value: $(params.repo_type)/$(params.pacman-cd-git-url)
+      value: $(params.repo_type)/$(params.chris-ui-cd-git-url)
     - name: GIT_REPO_NAME
-      value: $(params.pacman-cd-git-repo-name)
+      value: $(params.chris-ui-cd-git-repo-name)
     - name: GIT_BRANCH
-      value: $(params.pacman-cd-git-repo-branch-qa)
+      value: $(params.chris-ui-cd-git-repo-branch-qa)
     - name: GIT_PR_TARGET_BRANCH
-      value: $(params.pacman-cd-git-target-branch-pr)
+      value: $(params.chris-ui-cd-git-target-branch-pr)
     - name: GIT_PATH_TO_CONTENT
-      value: $(params.pacman-cd-git-repo-path-to-content-qa)
+      value: $(params.chris-ui-cd-git-repo-path-to-content-qa)
     - name: GIT_USER_NAME
-      value: $(params.pacman-cd-git-user-name)
+      value: $(params.chris-ui-cd-git-user-name)
     - name: GIT_USER_EMAIL
-      value: $(params.pacman-cd-git-user-email)
+      value: $(params.chris-ui-cd-git-user-email)
     - name: GIT_COMMIT_COMMENT
-      value: $(params.pacman-cd-git-commit-comment-qa)
+      value: $(params.chris-ui-cd-git-commit-comment-qa)
     - name: IMAGE
       value: $(tasks.create-runtime-image.results.new-image-repo-location)
       # value: $(tasks.push-image-to-quay.results.quay-image-repo-location)
@@ -310,9 +310,9 @@ spec:
   - name: set-commit-status-qa-branch-pending
     params:
     - name: GIT_REPO
-      value: $(params.pacman-cd-git-url)
+      value: $(params.chris-ui-cd-git-url)
     - name: REPO
-      value: $(params.pacman-cd-git-repo-name)
+      value: $(params.chris-ui-cd-git-repo-name)
     - name: GIT_TOKEN_SECRET_NAME
       value: github-access-token
     - name: GIT_TOKEN_SECRET_KEY
@@ -336,9 +336,9 @@ spec:
   - name: git-clone-resources-cd-qa-branch
     params:
     - name: url
-      value: https://$(params.repo_type)/$(params.pacman-cd-git-url).git
+      value: https://$(params.repo_type)/$(params.chris-ui-cd-git-url).git
     - name: revision
-      value: $(params.pacman-cd-git-repo-branch-qa)
+      value: $(params.chris-ui-cd-git-repo-branch-qa)
     - name: verbose
       value: 'false'
     taskRef:
@@ -356,7 +356,7 @@ spec:
   - name: configure-deployment-assets
     params:
     - name: subdirectory
-      value: $(params.pacman-cd-git-repo-path-to-content-qa)
+      value: $(params.chris-ui-cd-git-repo-path-to-content-qa)
     taskRef:
       kind: Task
       name: configure-deployment-assets
@@ -375,7 +375,7 @@ spec:
     - name: acs_api_token
       value: $(params.acs_api_token)
     - name: source_location
-      value: $(params.pacman-cd-git-repo-path-to-content-qa)
+      value: $(params.chris-ui-cd-git-repo-path-to-content-qa)
     - name: recursive-search
       value: $(params.recursive-search)
     - name: roxctl-output-format
@@ -395,9 +395,9 @@ spec:
   - name: set-commit-status-qa-branch-success
     params:
     - name: GIT_REPO
-      value: $(params.pacman-cd-git-url)
+      value: $(params.chris-ui-cd-git-url)
     - name: REPO
-      value: $(params.pacman-cd-git-repo-name)
+      value: $(params.chris-ui-cd-git-repo-name)
     - name: GIT_TOKEN_SECRET_NAME
       value: github-access-token
     - name: GIT_TOKEN_SECRET_KEY

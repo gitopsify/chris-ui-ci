@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: build-pacman-base-image
+  name: build-chris-ui-base-image
 spec:
   params:
     - name: quay-io-account
@@ -24,7 +24,7 @@ spec:
       description: The Buildah storage STORAGE_DRIVER
       type: string
   steps :
-    - name: build-pacman-base-image
+    - name: build-chris-ui-base-image
       command:
         - buildah
         - bud
@@ -34,7 +34,7 @@ spec:
         - '/files/buildah-containers'
         - '--layers'
         - '-f'
-        - base-image/04-dockerfile/fix-pacman-image
+        - base-image/04-dockerfile/fix-chris-ui-image
         - '-t'
         - quay.io/$(params.quay-io-account)/$(params.quay-io-repository):$(params.quay-io-image-tag-name)
         - .

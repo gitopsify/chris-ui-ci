@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   name: update-and-commit-kustomization-file
-  namespace: pacman-ci
+  namespace: chris-ui-ci
 spec:
   params:
   - name: GIT_URL

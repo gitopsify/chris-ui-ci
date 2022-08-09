@@ -1,21 +1,21 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: pacman-ci-pipeline-
-  namespace: pacman-ci
+  generateName: chris-ui-ci-pipeline-
+  namespace: chris-ui-ci
 spec:
   pipelineRef:
-    name: pacman-ci-pipeline
+    name: chris-ui-ci-pipeline
   resources:
     - name: intermediate-image
       resourceRef:
-        name:  pacman-ci-intermediate
+        name:  chris-ui-ci-intermediate
     - name: runtime-image
       resourceRef:
-        name: pacman-runtime
+        name: chris-ui-runtime
   params:
     - name: source-git-url
-      value: https://github.com/gitopsify/pacman.git
+      value: https://github.com/gitopsify/chris-ui.git
     - name: source-git-revision
       value: main
     - name: STORAGE_DRIVER
@@ -29,9 +29,9 @@ spec:
     - name: commit_author
       value: ""
     - name: openshift_app_name
-      value: pacman-ci
+      value: chris-ui-ci
     - name: runtime_image_name
-      value: pacman-runtime
+      value: chris-ui-runtime
     - name: runtime_base_image
       # - open-liberty-base:2 - bad image
       # - openliberty:10 - good image
@@ -39,25 +39,25 @@ spec:
       value: quay.io/marrober/openliberty:latest
     - name: repo_type
       value: github.com
-    - name: pacman-cd-git-url
-      value: gitopsify/pacman-cd
-    - name: pacman-cd-git-repo-name
-      value: pacman-cd
-    - name: pacman-cd-git-repo-path-to-content-development
+    - name: chris-ui-cd-git-url
+      value: gitopsify/chris-ui-cd
+    - name: chris-ui-cd-git-repo-name
+      value: chris-ui-cd
+    - name: chris-ui-cd-git-repo-path-to-content-development
       value: env/01-dev
-    - name: pacman-cd-git-repo-path-to-content-qa
+    - name: chris-ui-cd-git-repo-path-to-content-qa
       value: env/02-qa
-    - name: pacman-cd-git-repo-branch-qa
+    - name: chris-ui-cd-git-repo-branch-qa
       value: "qa-ready"
-    - name: pacman-cd-git-target-branch-pr
+    - name: chris-ui-cd-git-target-branch-pr
       value: "main"
-    - name: pacman-cd-git-commit-comment-dev
+    - name: chris-ui-cd-git-commit-comment-dev
       value: "Update from ci process - dev"
-    - name: pacman-cd-git-commit-comment-qa
+    - name: chris-ui-cd-git-commit-comment-qa
       value: "Update from ci process - qa"
-    - name: pacman-cd-git-user-name
+    - name: chris-ui-cd-git-user-name
       value: "Raghuram Banda"
-    - name: pacman-cd-git-user-email
+    - name: chris-ui-cd-git-user-email
       value: "rbanda@redhat.com"
     - name: acs_central_endpoint
       value: acs-secret
@@ -70,9 +70,9 @@ spec:
     - name: quay-io-account
       value: "rbrhssa"
     - name: quay-io-repository
-      value: "pacman"
+      value: "chris-ui"
     - name: production-event-listener-route
-      value: http://pacman-github-ci-prod-listener-pacman-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com
+      value: http://chris-ui-github-ci-prod-listener-chris-ui-ci.apps.cluster-54m5x.54m5x.sandbox472.opentlc.com
     - name: demolab
       value: "no"
   workspaces:

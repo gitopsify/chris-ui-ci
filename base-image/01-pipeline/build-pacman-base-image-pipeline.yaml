@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: build-pacman-base-image
+  name: build-chris-ui-base-image
 spec:
   params:
   - name: STORAGE_DRIVER
@@ -70,7 +70,7 @@ spec:
 ##------------------------------------------------------------------
 # Build the base image
 ##------------------------------------------------------------------
-  - name: build-pacman-base-image
+  - name: build-chris-ui-base-image
     params:
       - name: STORAGE_DRIVER
         value: $(params.STORAGE_DRIVER)
@@ -82,7 +82,7 @@ spec:
         value: $(params.quay-io-image-tag-name)
     taskRef:
       kind: Task
-      name: build-pacman-base-image
+      name: build-chris-ui-base-image
     runAfter:
     - git-clone-resources
     workspaces:
@@ -105,7 +105,7 @@ spec:
       kind: Task
       name: push-base-image
     runAfter:
-    - build-pacman-base-image
+    - build-chris-ui-base-image
     workspaces:
     - name: files
       workspace: files

@@ -2,11 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- 01-pipeline/build-pacman-base-image-pipeline.yaml
-- 03-tasks/build-pacman-base-image.yaml
-- 03-tasks/push-pacman-base-image.yaml
+- 01-pipeline/build-chris-ui-base-image-pipeline.yaml
+- 03-tasks/build-chris-ui-base-image.yaml
+- 03-tasks/push-chris-ui-base-image.yaml
 - 08-triggers/event-listener.yaml
 - 08-triggers/event-listener-route.yaml
 - 08-triggers/trigger-binding.yaml
 - 08-triggers/trigger-template.yaml
-- 09-cronjobs/base-pacman-image-check-and-rebuild.yaml
+- 09-cronjobs/base-chris-ui-image-check-and-rebuild.yaml

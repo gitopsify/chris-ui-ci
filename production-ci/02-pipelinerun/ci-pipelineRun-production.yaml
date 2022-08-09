@@ -1,29 +1,29 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: pacman-ci-pipeline-prod-
-  namespace: pacman-ci
+  generateName: chris-ui-ci-pipeline-prod-
+  namespace: chris-ui-ci
 spec:
   pipelineRef:
-    name: pacman-ci-pipeline-production
+    name: chris-ui-ci-pipeline-production
   params:
     - name: repo_type
       value: github.com
-    - name: pacman-cd-git-url
-      value: gitopsify/pacman-cd
-    - name: pacman-cd-git-repo-name
-      value: pacman-cd
-    - name: pacman-cd-git-repo-path-to-content
+    - name: chris-ui-cd-git-url
+      value: gitopsify/chris-ui-cd
+    - name: chris-ui-cd-git-repo-name
+      value: chris-ui-cd
+    - name: chris-ui-cd-git-repo-path-to-content
       value: env/03-production
-    - name: pacman-cd-git-repo-branch
+    - name: chris-ui-cd-git-repo-branch
       value: "production-ready"
-    - name: pacman-cd-git-target-branch-pr
+    - name: chris-ui-cd-git-target-branch-pr
       value: "production"
-    - name: pacman-cd-git-commit-comment
+    - name: chris-ui-cd-git-commit-comment
       value: "Update from ci process - production"
-    - name: pacman-cd-git-user-name
+    - name: chris-ui-cd-git-user-name
       value: "Raghuram Banda"
-    - name: pacman-cd-git-user-email
+    - name: chris-ui-cd-git-user-email
       value: "rbanda@redhat.com"
     - name: acs_central_endpoint
       value: acs-secret
@@ -34,7 +34,7 @@ spec:
     - name: recursive-search
       value: "true"
     - name: image
-      value: quay.io/rbrhssa/pacman:545f-frb5j
+      value: quay.io/rbrhssa/chris-ui:545f-frb5j
   workspaces:
   - name: resources
     volumeClaimTemplate:

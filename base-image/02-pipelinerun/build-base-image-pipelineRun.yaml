@@ -1,13 +1,13 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: build-pacman-base-image-
+  generateName: build-chris-ui-base-image-
 spec:
   pipelineRef:
-    name: build-pacman-base-image
+    name: build-chris-ui-base-image
   params:
     - name: git-url
-      value: https://github.com/gitopsify/pacman-ci.git
+      value: https://github.com/gitopsify/chris-ui-ci.git
     - name: git-revision
       value: main
     - name: quay-io-account

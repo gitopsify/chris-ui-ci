@@ -1,10 +1,10 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: pacman-runtime
-  namespace: pacman-ci
+  name: chris-ui-runtime
+  namespace: chris-ui-ci
 spec:
   params:
   - name: url
-    value: image-registry.openshift-image-registry.svc:5000/pacman-ci/pacman-runtime
+    value: image-registry.openshift-image-registry.svc:5000/chris-ui-ci/chris-ui-runtime
   type: image

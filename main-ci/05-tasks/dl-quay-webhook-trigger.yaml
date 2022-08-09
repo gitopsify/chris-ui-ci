@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
   name: dl-quay-webhook-trigger
-  namespace: pacman-ci
+  namespace: chris-ui-ci
 spec:
   params:
     - name: quay-io-account

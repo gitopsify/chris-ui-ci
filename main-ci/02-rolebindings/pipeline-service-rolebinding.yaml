@@ -1,12 +1,12 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: pacman-ci-pipelines-service-role-binding
+  name: chris-ui-ci-pipelines-service-role-binding
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: pacman-ci-pipelines-clusterrole
+  name: chris-ui-ci-pipelines-clusterrole
 subjects:
 - kind: ServiceAccount
-  name: pacman-ci-pipeline
-  namespace: pacman-ci
+  name: chris-ui-ci-pipeline
+  namespace: chris-ui-ci
