@@ -33,9 +33,6 @@ spec:
     - name: runtime_image_name
       value: chris-ui-runtime
     - name: runtime_base_image
-      # - open-liberty-base:2 - bad image
-      # - openliberty:10 - good image
-#      value: quay.io/marrober/open-liberty-base:2
       value: quay.io/fedora/nodejs-16:latest
     - name: repo_type
       value: github.com
