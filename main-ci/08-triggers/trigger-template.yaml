@@ -40,7 +40,7 @@ spec:
           # - open-liberty-base:2 - bad image
           # - openliberty:10 - good image
     #      value: quay.io/marrober/open-liberty-base:2  
-          value: quay.io/marrober/openliberty:latest  
+          value: quay.io/fedora/nodejs-16:latest
         - name: repo_type
           value: github.com
         - name: chris-ui-cd-git-url 

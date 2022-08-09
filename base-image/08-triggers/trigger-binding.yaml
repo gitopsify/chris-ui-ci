@@ -9,9 +9,9 @@ spec:
   - name: gitrevision
     value: main
   - name: quay-io-account
-    value: "rbrhssa"
+    value: "fedora"
   - name: quay-io-repository
-    value: "openliberty"
+    value: "nodejs-16"
   - name: quay-io-image-tag-name
     value: "latest"
   - name: acs_central_endpoint
