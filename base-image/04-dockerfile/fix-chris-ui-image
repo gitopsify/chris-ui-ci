@@ -1,4 +1,5 @@
 FROM quay.io/fedora/nodejs-16 as builder
+USER root
 
 WORKDIR /app
 COPY . .
@@ -7,6 +8,7 @@ RUN npm run -s print-version
 RUN npm install
 RUN npm run build
 
+USER 1001
 
 FROM quay.io/fedora/nodejs-16
 
@@ -20,4 +22,5 @@ COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 ENV HOST=0.0.0.0 PORT=3000
 CMD ["sirv", "--quiet", "--etag", "--single"]
+
 EXPOSE 3000
