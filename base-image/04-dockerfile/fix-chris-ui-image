@@ -4,7 +4,6 @@ USER root
 WORKDIR /app
 COPY . .
 
-RUN npm run -s print-version
 RUN npm install
 RUN npm run build
 
