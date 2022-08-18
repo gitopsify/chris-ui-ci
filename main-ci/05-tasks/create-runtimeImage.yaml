@@ -61,6 +61,14 @@ spec:
           echo "github.commit_author=\"$(params.commit_author)\" \\" >> ext-dockerfile.gen
           echo "pipeline.name=\"$(params.pipelineName)\" \\" >> ext-dockerfile.gen
           echo "pipeline.run=\"$(params.pipelineRunName)\" \\" >> ext-dockerfile.gen
+          echo "BRET ADDED-------------------------------------------------------------------->"
+          echo "COPY --from=intermediate-image /app /app" >> ext-dockerfile.gen
+          echo "COPY --from=intermediate-image /docker-entrypoint.sh /docker-entrypoint.sh" >> ext-dockerfile.gen
+          echo "ENTRYPOINT [\"/docker-entrypoint.sh\"]" >> ext-dockerfile.gen
+          echo "ENV HOST=0.0.0.0 PORT=3000" >> ext-dockerfile.gen
+          echo "CMD [\"sirv\", \"--quiet\", \"--etag\", \"--single\"]" >> ext-dockerfile.gen
+          echo "EXPOSE 3000" >> ext-dockerfile.gen
+          echo "END BRET ADDITIONS ----------------------------------------------------------|"
           echo "------------------------------"
           cat ext-dockerfile.gen
           echo "------------------------------"
