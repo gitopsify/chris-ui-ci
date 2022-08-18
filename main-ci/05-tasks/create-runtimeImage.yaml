@@ -64,7 +64,7 @@ spec:
           echo "github.commit.date=\"$(params.commit_date)\" \\" >> ext-dockerfile.gen
           echo "github.commit_author=\"$(params.commit_author)\" \\" >> ext-dockerfile.gen
           echo "pipeline.name=\"$(params.pipelineName)\" \\" >> ext-dockerfile.gen
-          echo "pipeline.run=\"$(params.pipelineRunName)\" \\" >> ext-dockerfile.gen
+          echo "pipeline.run=\"$(params.pipelineRunName)\"" >> ext-dockerfile.gen
           echo "BRET ADDED-------------------------------------------------------------------->"
           echo "ENTRYPOINT [\"/docker-entrypoint.sh\"]" >> ext-dockerfile.gen
           echo "ENV HOST=0.0.0.0 PORT=3000" >> ext-dockerfile.gen
