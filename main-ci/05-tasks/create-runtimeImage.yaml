@@ -53,6 +53,10 @@ spec:
         - |-
           echo "FROM localhost/$(resources.inputs.intermediate-image.url) as intermediate-image" > ext-dockerfile.gen
           echo "FROM $(params.runtime_base_image) as runtime-image" >> ext-dockerfile.gen
+          echo "BRET ADDED-------------------------------------------------------------------->"
+          echo "COPY --from=intermediate-image /app /app" >> ext-dockerfile.gen
+          echo "COPY --from=intermediate-image /docker-entrypoint.sh /docker-entrypoint.sh" >> ext-dockerfile.gen
+          echo "END BRET ADDITIONS ----------------------------------------------------------|"
           echo "LABEL github.repository.url=\"$(params.gitrepository_url)\" \\" >> ext-dockerfile.gen
           echo "github.repository.fullname=\"$(params.gitrepository_fullname)\" \\" >> ext-dockerfile.gen
           echo "github.commit.ref=\"$(params.commit_reference_branch)\" \\" >> ext-dockerfile.gen
@@ -62,8 +66,6 @@ spec:
           echo "pipeline.name=\"$(params.pipelineName)\" \\" >> ext-dockerfile.gen
           echo "pipeline.run=\"$(params.pipelineRunName)\" \\" >> ext-dockerfile.gen
           echo "BRET ADDED-------------------------------------------------------------------->"
-          echo "COPY --from=intermediate-image /app /app" >> ext-dockerfile.gen
-          echo "COPY --from=intermediate-image /docker-entrypoint.sh /docker-entrypoint.sh" >> ext-dockerfile.gen
           echo "ENTRYPOINT [\"/docker-entrypoint.sh\"]" >> ext-dockerfile.gen
           echo "ENV HOST=0.0.0.0 PORT=3000" >> ext-dockerfile.gen
           echo "CMD [\"sirv\", \"--quiet\", \"--etag\", \"--single\"]" >> ext-dockerfile.gen
