@@ -294,8 +294,8 @@ spec:
       kind: Task
       name: update-and-commit-kustomization-file
     runAfter:
-      # - push-image-to-quay
-      - image-build-check
+      - push-image-to-quay
+      # - image-build-check
     when:
     - input: "$(tasks.image-build-check.results.scan-result)"
       operator: in
