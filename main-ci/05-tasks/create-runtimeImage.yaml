@@ -57,6 +57,7 @@ spec:
           echo "COPY --from=intermediate-image /app /app" >> ext-dockerfile.gen
           echo "COPY --from=intermediate-image /docker-entrypoint.sh /docker-entrypoint.sh" >> ext-dockerfile.gen
           echo "RUN npm install --save sirv" >> ext-dockerfile.gen
+          echo "RUN yarn global add sirv-cli" >> ext-dockerfile.gen
           echo "END BRET ADDITIONS ----------------------------------------------------------|"
           echo "LABEL github.repository.url=\"$(params.gitrepository_url)\" \\" >> ext-dockerfile.gen
           echo "github.repository.fullname=\"$(params.gitrepository_fullname)\" \\" >> ext-dockerfile.gen
